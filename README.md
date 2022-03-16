@@ -20,7 +20,7 @@ A Github themed portfolio template using TailwindCSS
 
 ## Demo
 
-- [Do check it out!](https://tathagata-dev.vercel.app/)
+- [Do check it out!](https://dev-tathagata.vercel.app/)
 
 
 ## Installation
