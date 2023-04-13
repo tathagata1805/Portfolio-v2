@@ -7,10 +7,10 @@ import Head from 'next/head';
 export default function skillsAndExperience() {
   const internData = {
     codeclouds: {
-      title: 'CodeClouds, Frontend Developer',
+      title: 'CodeClouds IT Solutions Pvt. Ltd., Frontend Developer',
       date: 'August 2022 – Present',
       place: 'Kolkata, India',
-      desc: 'CodeClouds is a Multi National Company where I currently work as a Frontend Developer, in the Kolkata, India team. My responsibilities revolve around building the frontend of multiple client websites and further optimizing them and improving the code structures. I closely work with a team and my mentors to provide the most optimal solution to the clients. I work in tech stacks that include React JS, Redux, JavaScript, HTML, CSS, Bootstrap, MaterialUI, and other frontend technologies.',
+      desc: 'Working as a part of the Custom Team in CodeClouds Kolkata majorly handling the user side of various client projects. Collaborating with Designers to implement seamless UI UX experience for the users, and working with backend developers to implement and integrate new features, improving scalability, and providing support to various internal projects across teams.',
     },
     quordnet: {
       title: 'Quordnet Academy, Frontend Engineer (Intern)',
@@ -19,8 +19,8 @@ export default function skillsAndExperience() {
       desc: 'Quordnet Academy is an Ed-Tech based startup where I developed the Frontend of the main website of Quordnet Services using React JS, HTML, CSS and Material UI and deployed the website on the internet. I also helped in designing the UI using design tools. I have also worked on building the Quordnet Academy website which is a one- stop education solution using React JS and other frontend technologies. The website contains features like in- built IDE, Blog section as well as Online portal for conducting video lectures.  I have worked in a team with skilled developers and designers and met all the deadlines successfully.',
     },
     webprism: {
-      title: 'Web Prism IT Solutions PVT. Ltd, Frontend Engineer (Part Time)',
-      date: 'June 2022 – Present',
+      title: 'Web Prism IT Solutions PVT. Ltd, Frontend Engineer (Freelance)',
+      date: 'June 2022 – August 2022',
       place: 'Kolkata, India',
       desc: 'Web Prism IT Solutions Pvt. Ltd. is a service based startup where I work as a Freelance Frontend Engineer, responsible for developing and designing websites for our clients by collaborating with senior developers snd designers who come from different tech stacks and experiences. I solely handle the frontend domain and generally use HTML, CSS, Bootstrap, JavaScript, React to build the websites and also optimize the performances and work on existing codebases to improve their structure and scale them up.',
     },
@@ -29,7 +29,7 @@ export default function skillsAndExperience() {
   const volData = {
     ureckon: {
       title: 'Ureckon, UEMK',
-      desig: 'Core Committee Member',
+      desig: 'Organising Member',
       year: '2019 - 2022',
       place: 'Kolkata, India',
     },
