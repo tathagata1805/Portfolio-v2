@@ -53,7 +53,7 @@ export default function Aside() {
               </div>
             </Link>
             <div className="flex gap-x-2 items-center">
-              <IoStorefrontOutline className="flex-none text-gray-500" /> @Quordnet Academy,
+              <IoStorefrontOutline className="flex-none text-gray-500" /> Frontend Developer @CodeClouds,
               B.Tech ECE @UEMK
             </div>
             <Link href="tel:+919912341234">
