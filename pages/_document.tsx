@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
       <Html className="nightwind">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
           {/* Meta Tags */}
           <meta name="title" content="GitWind" key="title" />
           <meta
