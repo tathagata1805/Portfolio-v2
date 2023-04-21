@@ -33,7 +33,7 @@ export default function Aside() {
 
         <div className="my-2">
           <a
-            href="assets/resume/My Resume.pdf"
+            href="assets/resume/Tathagata Resume.pdf"
             download
             className="flex gap-1 items-center w-max border-none rounded px-3 py-1 bg-green-700 text-white hover:bg-green-600"
           >
