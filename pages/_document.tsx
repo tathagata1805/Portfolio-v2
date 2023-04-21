@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           {/* Meta Tags */}
           <meta name="title" content="GitWind" key="title" />
+          <meta name="theme-color" content="#000000" />
           <meta
             name="description"
             key="description"
