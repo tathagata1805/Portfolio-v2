@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
           <meta
             property="og:image"
             key="ogimage"
-            content="https://gitwind.ml/assets/img/gitwind-banner.jpg"
+            content="https://gitwind.ml/assets/img/mypic.jfif"
           />
 
           {/* <!-- Twitter --> */}
@@ -59,7 +59,7 @@ export default class MyDocument extends Document {
           <meta
             property="twitter:image"
             key="twitterimage"
-            content="https://gitwind.ml/assets/img/gitwind-banner.jpg"
+            content="https://gitwind.ml/assets/img/mypic.jfif"
           />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
