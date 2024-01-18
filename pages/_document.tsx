@@ -12,8 +12,10 @@ export default class MyDocument extends Document {
       <Html className="nightwind">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
           {/* Meta Tags */}
           <meta name="title" content="GitWind" key="title" />
+          <meta name="theme-color" content="#000000" />
           <meta
             name="description"
             key="description"
@@ -32,7 +34,7 @@ export default class MyDocument extends Document {
           <meta
             property="og:image"
             key="ogimage"
-            content="https://gitwind.ml/assets/img/gitwind-banner.jpg"
+            content="https://gitwind.ml/assets/img/mypic.jfif"
           />
 
           {/* <!-- Twitter --> */}
@@ -59,7 +61,7 @@ export default class MyDocument extends Document {
           <meta
             property="twitter:image"
             key="twitterimage"
-            content="https://gitwind.ml/assets/img/gitwind-banner.jpg"
+            content="https://gitwind.ml/assets/img/mypic.jfif"
           />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}

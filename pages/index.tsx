@@ -40,12 +40,12 @@ export default function Index() {
     wd: {
       title: 'Web Development',
       desc:
-        'I have been learning web development since my third year and have worked on various personal projects and also have been lucky enough to work in various professional projects which have helped people to make their life easier.',
+        'I have been a self taught developer who has learnt by doing. I have made multiple projects throughout my journey, which are present in GitHub and have been brushing up my skills throughout.',
     },
     flc: {
-      title: 'Engineering',
+      title: 'Software Engineering',
       desc:
-        'Apart from Software Development, I have a keen interest in Electronics and how Hardware interacts with Softwares.',
+        'Working as a Software Developer since past more than a year, I intend to work in challenging roles and keep brushing up my skills to improve myself and my work',
     },
   };
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   IoLogoFacebook,
   IoLogoLinkedin,
@@ -11,9 +11,9 @@ import {
   IoStorefrontOutline,
   IoPhonePortraitOutline,
   IoArrowDown,
-} from 'react-icons/io5';
-import Pills from '@/components/Pills';
-import Link from 'next/link';
+} from "react-icons/io5";
+import Pills from "@/components/Pills";
+import Link from "next/link";
 
 export default function Aside() {
   return (
@@ -26,11 +26,14 @@ export default function Aside() {
         />
         <h1 className="text-2xl font-bold">Tathagata Chakraborty</h1>
         <h3 className="text-lg">tathagata1805</h3>
-        <p className="py-2"> If you have more number of haters, then you're surely improving.</p>
+        <p className="py-2">
+          {" "}
+          If you have more number of haters, then you're surely improving.
+        </p>
 
         <div className="my-2">
           <a
-            href="assets/resume/My Resume.pdf"
+            href="assets/resume/Tathagata Resume.pdf"
             download
             className="flex gap-1 items-center w-max border-none rounded px-3 py-1 bg-green-700 text-white hover:bg-green-600"
           >
@@ -43,22 +46,21 @@ export default function Aside() {
           <h3 className="text-lg font-semibold pt-1">Basic Info</h3>
           <div className="mt-2 mb-4 text-lg flex flex-col gap-2">
             <div className="flex gap-x-2 items-center">
-              <IoLocationOutline className="flex-none text-gray-500" />{' '}
-              India
+              <IoLocationOutline className="flex-none text-gray-500" /> India
             </div>
             <Link href="mailto:user@domain.com">
               <div className="flex gap-x-2 items-center">
-                <IoMailOutline className="flex-none text-gray-500" />{' '}
+                <IoMailOutline className="flex-none text-gray-500" />{" "}
                 tathagata1805@gmail.com
               </div>
             </Link>
             <div className="flex gap-x-2 items-center">
-              <IoStorefrontOutline className="flex-none text-gray-500" /> @Quordnet Academy,
-              B.Tech ECE @UEMK
+              <IoStorefrontOutline className="flex-none text-gray-500" />{" "}
+              @CodeClouds, B.Tech ECE @UEMK
             </div>
             <Link href="tel:+919912341234">
               <div className="flex gap-x-2 items-center">
-                <IoPhonePortraitOutline className="flex-none text-gray-500" />{' '}
+                <IoPhonePortraitOutline className="flex-none text-gray-500" />{" "}
                 +917003028043
               </div>
             </Link>
