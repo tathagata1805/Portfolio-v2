@@ -18,7 +18,7 @@ export default function education() {
       major: 'Bachelor of Technology (B.Tech)',
       institute: 'University of Engineering and Management',
       year: '2019 – 2023',
-      grade: '9.34 (till third year)',
+      grade: '8.55 (DGPA)',
     },
     school: {
       degree: 'Higher Secondary Education (10+2)',
@@ -57,52 +57,54 @@ export default function education() {
         <div className="px-4">
           <div className="flex gap-2 items-center mt-6">
             <IoLayersOutline className="flex-none text-xl" />
-            <h3 className="text-lg font-semibold ">Frontend </h3>
+            <h3 className="text-lg font-semibold ">Client Side technologies </h3>
           </div>
           <div className="flex flex-wrap gap-3 my-3 text-sm md:ml-8">
             <Pills text="HTML" cname="bg-green-100 py-1 " />
             <Pills text="SCSS" cname="bg-blue-100 py-1" />
             <Pills text="JavaScript" cname="bg-purple-100 py-1" />
-            <Pills text="React Native" cname="bg-red-100 py-1" />
-            <Pills text="Next JS" cname="bg-pink-100 py-1" />
-            <Pills text="React JS" cname="bg-yellow-100 py-1 " />
+            <Pills text="TypeScript" cname="bg-red-100 py-1" />
+            <Pills text="React JS" cname="bg-pink-100 py-1" />
+            <Pills text="Styled Components" cname="bg-yellow-100 py-1 " />
+            <Pills text="Next JS" cname="bg-yellow-100 py-1 " />
+
           </div>
 
           <div className="flex gap-2 items-center mt-6">
             <IoSettingsOutline className="flex-none text-xl" />
-            <h3 className="text-lg font-semibold ">Tools & Frameworks </h3>
+            <h3 className="text-lg font-semibold ">Server Side Technologies </h3>
           </div>
           <div className="flex flex-wrap gap-3 my-3 text-sm md:ml-8">
-            <Pills text="Material UI" cname="bg-red-100 py-1 " />
-            <Pills text="TailwindCSS" cname="bg-purple-100 py-1 " />
-            <Pills text="Bootstrap" cname="bg-gray-100 py-1 " />
-            <Pills text="Git & GitHub" cname="bg-indigo-100 py-1 " />
-            <Pills text="VSCode" cname="bg-gray-100 py-1 " />
+            <Pills text="Node JS" cname="bg-red-100 py-1 " />
+            <Pills text="Express" cname="bg-purple-100 py-1 " />
+            <Pills text="Gateway & 3rd Party API Integration" cname="bg-gray-100 py-1 " />
+            <Pills text="REST API Services" cname="bg-indigo-100 py-1 " />
+            <Pills text="Asynchronous and Synchronous API Integration" cname="bg-gray-100 py-1 " />
+            <Pills text="Web and API Security" cname="bg-gray-100 py-1 " />
           </div>
 
           <div className="flex gap-2 items-center mt-6">
             <IoDiceOutline className="flex-none text-xl" />
-            <h3 className="text-lg font-semibold ">Programming & Others </h3>
+            <h3 className="text-lg font-semibold ">Databases and Tools </h3>
           </div>
           <div className="flex flex-wrap gap-3 my-3 text-sm md:ml-8">
             <Pills text="Google Firebase" cname="bg-blue-100 py-1 " />
             <Pills text="MongoDB" cname="bg-pink-100 py-1 " />
-            <Pills text="DSA" cname="bg-pink-100 py-1 " />
-            <Pills text="Java" cname="bg-gray-100 py-1 " />
-            <Pills text="Python" cname="bg-green-100 py-1 " />
-            <Pills text=" Figma" cname="bg-red-100 py-1 " />
+            <Pills text="MySQL" cname="bg-pink-100 py-1 " />
+            <Pills text="Docker" cname="bg-gray-100 py-1 " />
+            <Pills text="MS AZURE" cname="bg-green-100 py-1 " />
+            <Pills text="GIT Version Control" cname="bg-red-100 py-1 " />
+            <Pills text="Asana and Jira" cname="bg-red-100 py-1 " />
           </div>
 
           <div className="flex gap-2 items-center mt-6">
             <IoPersonOutline className="flex-none text-xl" />
-            <h3 className="text-lg font-semibold ">Personal </h3>
+            <h3 className="text-lg font-semibold ">Others </h3>
           </div>
           <div className="flex flex-wrap gap-3 my-3 text-sm md:ml-8">
-            <Pills text="Public Speaking" cname="bg-red-100 py-1 " />
-            <Pills text="Project Management" cname="bg-blue-100 py-1 " />
-            <Pills text="Leadership" cname="bg-yellow-100 py-1 " />
-            <Pills text="Team Work" cname="bg-green-100 py-1 " />
-            <Pills text="Football" cname="bg-gray-100 py-1 " />
+            <Pills text="API Testing tools" cname="bg-red-100 py-1 " />
+            <Pills text="DevOps CICD" cname="bg-blue-100 py-1 " />
+            <Pills text="Linux Platform" cname="bg-yellow-100 py-1 " />
           </div>
         </div>
       </Layout>

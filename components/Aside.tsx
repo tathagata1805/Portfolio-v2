@@ -28,7 +28,7 @@ export default function Aside() {
         <h3 className="text-lg">tathagata1805</h3>
         <p className="py-2">
           {" "}
-          If you have more number of haters, then you're surely improving.
+          Frontend Engineer | React JS Enthusiast | JavaScript lover.
         </p>
 
         <div className="my-2">

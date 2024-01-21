@@ -7,22 +7,22 @@ import Head from 'next/head';
 export default function skillsAndExperience() {
   const internData = {
     codeclouds: {
-      title: 'CodeClouds IT Solutions Pvt. Ltd., Frontend Developer',
+      title: 'CodeClouds IT Solutions Pvt. Ltd., Software Engineer - Frontend',
       date: 'August 2022 – Present',
       place: 'Kolkata, India',
-      desc: 'Working as a part of the Custom Team in CodeClouds Kolkata majorly handling the user side of various client projects. Collaborating with Designers to implement seamless UI UX experience for the users, and working with backend developers to implement and integrate new features, improving scalability, and providing support to various internal projects across teams.',
+      desc: 'Developed and maintained dynamic web applications and platforms with 6 other team members. Increased website performance by around a significant margin of 60 %. Collaborated with backend developers, design team and QA members, led troubleshooting and updated sites and ensured smooth functionality of web applications throughout entire SDLC. Implemented cloud and containerization solutions with senior developers to ensure smooth development process across teams. Worked with internal product teams to develop cross functional websites and internal products of the organization along with the official website. Optimized the code for faster loading, improved performance by more than 50% and SEO friendliness. Mentored new joiners and trainees in Software Engineering domains and developed workflow for them',
     },
     quordnet: {
       title: 'Quordnet Academy, Frontend Engineer (Intern)',
       date: 'January 2022 – July 2022',
       place: 'Kolkata, India',
-      desc: 'Quordnet Academy is an Ed-Tech based startup where I developed the Frontend of the main website of Quordnet Services using React JS, HTML, CSS and Material UI and deployed the website on the internet. I also helped in designing the UI using design tools. I have also worked on building the Quordnet Academy website which is a one- stop education solution using React JS and other frontend technologies. The website contains features like in- built IDE, Blog section as well as Online portal for conducting video lectures.  I have worked in a team with skilled developers and designers and met all the deadlines successfully.',
+      desc: '•	Solely responsible for the development of our product websites, adding new and advanced features to the websites using React JS and other frontend technologies, thus improving user engagement by over 70% and SEO friendliness by over 50%. Adding mobile responsiveness and dark mode to the website, improving the performance by more than 40%. Writing clean, scalable and production ready code using modern architecture and technologies. Containerized the codebase, along with implemented cloud services along with the Engineering leads to ensure smooth process throughout the SDLC.',
     },
     webprism: {
       title: 'Web Prism IT Solutions PVT. Ltd, Frontend Engineer (Freelance)',
       date: 'June 2022 – August 2022',
       place: 'Kolkata, India',
-      desc: 'Web Prism IT Solutions Pvt. Ltd. is a service based startup where I work as a Freelance Frontend Engineer, responsible for developing and designing websites for our clients by collaborating with senior developers snd designers who come from different tech stacks and experiences. I solely handle the frontend domain and generally use HTML, CSS, Bootstrap, JavaScript, React to build the websites and also optimize the performances and work on existing codebases to improve their structure and scale them up.',
+      desc: 'Worked as a Freelancing Frontend Engineer and was a individual contributor to multiple client projects across the world. Collaborated with senior developers to ensure smooth process of development. Built teams and led a team of 3 engineers to develop highly dynamic web applications. Actively participated in deployment and production solutions, containerizations techniques and client handling thus streamlining the process.',
     },
   };
 

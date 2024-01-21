@@ -23,7 +23,7 @@ export default function Index() {
     pbs: {
       title: 'Public Speaking',
       desc:
-        'By virtue of being a Class Representative throughout my Engineering, I have got a lot of opportunities to Speak at a public platform and help my peers at every need.',
+        'By virtue of being a Class Representative throughout my Engineering tenure, I have got a lot of opportunities to Speak at a public platform and help my peers at every need.',
     },
     tvl: {
       title: 'Travelling',
@@ -45,7 +45,7 @@ export default function Index() {
     flc: {
       title: 'Software Engineering',
       desc:
-        'Working as a Software Developer since past more than a year, I intend to work in challenging roles and keep brushing up my skills to improve myself and my work',
+        'Working as a Software Developer since around 2, I intend to work in challenging roles and keep brushing up my skills to improve myself and my work',
     },
   };
   return (

@@ -21,6 +21,7 @@ import {
   IoLogoInstagram,
   IoPaperPlane,
   IoCode,
+  IoGlobeSharp,
 } from 'react-icons/io5';
 import DarkToggle from './DarkToggle';
 
@@ -172,8 +173,8 @@ export default function Header() {
 
           <div className="pt-1">
             <div className="text-white text-xl flex gap-5 dark:text-white">
-              <Link href="https://twitter.com/tathagata1805">
-                <IoLogoTwitter className="hover:text-blue-300" />
+              <Link href="https://dev-tathagata.vercel.app">
+                <IoGlobeSharp className="hover:text-blue-300" />
               </Link>
               <Link href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3">
                 <IoLogoLinkedin className="hover:text-blue-300" />
@@ -181,12 +182,12 @@ export default function Header() {
               <Link href="https://github.com/tathagata1805">
                 <IoLogoGithub className="hover:text-blue-300" />
               </Link>
-              <Link href="https://facebook.com/tathagata.chakraborty.9041">
+              {/* <Link href="https://facebook.com/tathagata.chakraborty.9041">
                 <IoLogoFacebook className="hover:text-blue-300" />
               </Link>
               <Link href="https://instagram.com/s_a_v_a_g_e_k_i_n_g_18">
                 <IoLogoInstagram className="hover:text-blue-300" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

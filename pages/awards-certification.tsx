@@ -14,11 +14,9 @@ export default function awardsAndCertification() {
   };
   const certData = {
     dcmp: {
-      title: 'Programming For Everybody',
-      platform: 'Coursera',
-      date: '2019',
-      link: '',
-      linkText: '',
+      title: 'Azure Cloud with CICD Pipeline',
+      platform: 'Udemy',
+      date: '2023',
     },
     udemyJs: {
       title: 'JavaScript for Beginners',
@@ -35,9 +33,9 @@ export default function awardsAndCertification() {
       linkText: '',
     },
     udemyDsa: {
-      title: 'Data Structures & Algorithm',
+      title: 'Node JS Bootcamp',
       platform: 'Udemy',
-      date: '2021',
+      date: '2022',
       link: '',
       linkText: '',
     },

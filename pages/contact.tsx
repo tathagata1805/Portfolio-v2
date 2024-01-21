@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
 import {
+  IoGlobeSharp,
   IoLogoFacebook,
   IoLogoGithub,
   IoLogoInstagram,
@@ -26,17 +27,19 @@ export default function contact() {
               Let's talk about everything!
             </h2>
             <h3 className="text-sm md:text-md">
-              Don't like forms? Send me an{' '}
+              Don't like forms? Connect me over{' '}
               <a
-                href="tathagata1805@gmail.com"
+                href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3/"
                 className="text-blue-600 hover:underline"
               >
-                Email
+                LinkedIn
               </a>
               . 👋
             </h3>
             <h4>
-              <span className="text-sm md:text-md font-semibold">Email me at : </span>
+              <span className="text-sm md:text-md font-semibold">
+                Email me at :{' '}
+              </span>
               tathagata1805@gmail.com
             </h4>
             <h4>
@@ -47,8 +50,8 @@ export default function contact() {
             </h4>
             <div className="mt-2">
               <div className="text-black text-xl flex gap-5">
-                <Link href="https://twitter.com/tathagata1805">
-                  <IoLogoTwitter className="hover:text-pink-600" />
+                <Link href="https://dev-tathagata.vercel.app">
+                  <IoGlobeSharp className="hover:text-pink-600" />
                 </Link>
                 <Link href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3">
                   <IoLogoLinkedin className="hover:text-pink-600" />
@@ -56,17 +59,17 @@ export default function contact() {
                 <Link href="https://github.com/tathagata1805">
                   <IoLogoGithub className="hover:text-pink-600" />
                 </Link>
-                <Link href="https://facebook.com/tathagata.chakraborty.9041">
+                {/* <Link href="https://facebook.com/tathagata.chakraborty.9041">
                   <IoLogoFacebook className="hover:text-pink-600" />
                 </Link>
-                <Link href="https://instagram.com/s_a_v_a_g_e_k_i_n_g_18">
+                <Link href="https://instagram.com/a_day_as_tathagata">
                   <IoLogoInstagram className="hover:text-pink-600" />
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
         </div>
-        <h3 className="text-lg font-semibold mt-6 mb-4">Contact Form</h3>
+        {/* <h3 className="text-lg font-semibold mt-6 mb-4">Contact Form</h3>
         <div className="flex flex-col gap-2 px-4">
           <form>
             <div className="grid grid-cols-1 gap-6 md:max-w-md lg:max-w-lg">
@@ -120,7 +123,7 @@ export default function contact() {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
       </Layout>
     </>
   );
