@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   IoLogoFacebook,
   IoLogoLinkedin,
@@ -11,9 +11,9 @@ import {
   IoStorefrontOutline,
   IoPhonePortraitOutline,
   IoArrowDown,
-} from "react-icons/io5";
-import Pills from "@/components/Pills";
-import Link from "next/link";
+} from 'react-icons/io5';
+import Pills from '@/components/Pills';
+import Link from 'next/link';
 
 export default function Aside() {
   return (
@@ -27,8 +27,10 @@ export default function Aside() {
         <h1 className="text-2xl font-bold">Tathagata Chakraborty</h1>
         <h3 className="text-lg">tathagata1805</h3>
         <p className="py-2">
-          {" "}
-          Frontend Engineer | React JS Enthusiast | JavaScript lover.
+          {' '}
+          SERVING NOTICE PERIOD | Actively seeking opportunities | Frontend @CodeClouds | ex- Frontend
+          (Intern)@Quordnet Academy | ex-Frontend Developer (Freelance)@WPITS |
+          React JS, Next JS, JavaScript, DevOps | B.Tech@ UEMK
         </p>
 
         <div className="my-2">
@@ -50,17 +52,17 @@ export default function Aside() {
             </div>
             <Link href="mailto:user@domain.com">
               <div className="flex gap-x-2 items-center">
-                <IoMailOutline className="flex-none text-gray-500" />{" "}
+                <IoMailOutline className="flex-none text-gray-500" />{' '}
                 tathagata1805@gmail.com
               </div>
             </Link>
             <div className="flex gap-x-2 items-center">
-              <IoStorefrontOutline className="flex-none text-gray-500" />{" "}
-              @CodeClouds, B.Tech ECE @UEMK
+              <IoStorefrontOutline className="flex-none text-gray-500" />{' '}
+              @CodeClouds IT Solutions Pvt. Ltd.
             </div>
             <Link href="tel:+919912341234">
               <div className="flex gap-x-2 items-center">
-                <IoPhonePortraitOutline className="flex-none text-gray-500" />{" "}
+                <IoPhonePortraitOutline className="flex-none text-gray-500" />{' '}
                 +917003028043
               </div>
             </Link>
@@ -93,11 +95,14 @@ export default function Aside() {
         <div className="my-2 mb-8">
           <h3 className="text-lg font-semibold pt-1">Skills</h3>
           <div className="mt-2 flex flex-wrap gap-3">
-            <Pills text="Team Player" cname="bg-red-100 py-1" />
-            <Pills text="Fast Learner" cname="bg-blue-100 py-1" />
-            <Pills text="Organized" cname="bg-purple-100 py-1" />
-            <Pills text="Hard Working" cname="bg-green-100 py-1" />
-            <Pills text="Leadership" cname="bg-yellow-100 py-1" />
+            <Pills text="React JS" cname="bg-red-100 py-1" />
+            <Pills text="Next JS" cname="bg-blue-100 py-1" />
+            <Pills text="Node" cname="bg-purple-100 py-1" />
+            <Pills text="JavaScript" cname="bg-green-100 py-1" />
+            <Pills text="TypeScript" cname="bg-red-100 py-1" />
+            <Pills text="Redux" cname="bg-blue-100 py-1" />
+            <Pills text="REST APIs" cname="bg-green-100 py-1" />
+            <Pills text="GIT" cname="bg-yellow-100 py-1" />
           </div>
         </div>
       </aside>

@@ -3,13 +3,13 @@ import Layout from '@/components/Layout';
 import ProjectCards from '@/components/ProjectCards';
 import Head from 'next/head';
 
-export default function projects() {
+export default function Projects() {
   const projectData = {
     project1: {
       title: 'Portfolio',
-      subTitle: 'Built this Portfolio, which is consider as my best project till date. Used Next JS, React JS and Tailwind for development and Docker to containerize the project and Vercel as the deployment platform. This project is also available in Docker Hub registry for the community to use the project to learn.',
+      subTitle: 'My personal portfolio, built with Next.js, React, and Tailwind CSS. Dockerized for seamless deployment, with a live version hosted on Vercel. Available on Docker Hub for the community to explore and learn.',
       desc:
-        "Used React, CSS , JavaScript, Git, Redux.",
+        "A sleek and modern portfolio showcasing my projects and skills, utilizing React, Redux, and CSS for a smooth user experience.",
       link: 'https://hub.docker.com/r/tathagata1805/github-themed-portfolio',
       linkText: 'Docker Hub',
       stacks: [
@@ -22,9 +22,9 @@ export default function projects() {
     },
     project2: {
       title: 'Bookztron',
-      subTitle: 'A full stack Library Management System for users to order and buy their favorite books in real time. Features include end to end user authentication, cart and wishlist management, sorting and filtering features and Raxorpay Payment Gateway Integration and Netlify as Deployment platform',
+      subTitle: 'A full-stack Library Management System for real-time book purchasing. Includes user authentication, cart/wishlist management, and payment integration via Razorpay. Deployed on Netlify.',
       desc:
-        "Used React JS, Node JS, MongoDB , Netlify.",
+        "Built with React JS, Node.js, MongoDB, and Redux, Bookztron enables users to browse, purchase, and manage their book orders effortlessly.",
       link: 'https://bookztron-client.netlify.app/',
       linkText: 'Live',
       stacks: [
@@ -35,94 +35,79 @@ export default function projects() {
         { title: 'Netlify', color: 'text-green-200' },
       ],
     },
-      project3: {
-        title: 'Sorting Visualizer',
-        subTitle: 'A React JS website to visualize all the sorting algorithms in an interactive way.',
-        desc:
-          "Used React JS, Styled Components , Zustand, Vite, Sorting algorithms.",
-        link: 'https://github.com/tathagata1805/Sorting-Visualizer',
-        linkText: 'Github',
-        stacks: [
-          { title: 'React', color: 'text-red-200' },
-          { title: 'Vite', color: 'text-blue-200' },
-          { title: 'Styled Components', color: 'text-gray-200' },
-          { title: 'React Material', color: 'text-yellow-200' },
-          { title: 'Zustand', color: 'text-green-200' },
-        ],
-      },
-      // project4: {
-      //   title: 'Food Delivery Website',
-      //   subTitle: 'This is a full stack food delivery website with end-to-end features like User Authentication, Order placing and live order tracking, Admin control, Online payment gateway backed by a MongoDB database and server made on MVC Architecture .',
-      //   desc:
-      //     "Used VSCode, HTML, CSS , Laravel Mix, Node JS, MongoDB, WebRTC, Stripe API, Git.",
-      //   link: 'https://github.com/tathagata1805/Food-Delivery-website',
-      //   linkText: 'Github',
-      //   stacks: [
-      //     { title: 'HTML', color: 'text-red-200' },
-      //     { title: 'Laravel', color: 'text-blue-200' },
-      //     { title: 'CSS', color: 'text-gray-200' },
-      //     { title: 'Node JS', color: 'text-yellow-200' },
-      //     { title: 'MongoDB', color: 'text-green-200' },
-      //   ],
-      // },
-      project5: {
-        title: 'OctoProfile',
-        subTitle: 'A website made using Next.js to view GitHub details of any user across the world.',
-        desc:
-          "Used Next JS, GitHub Polygot , Chart JS, Styled Components, React Flip Move.",
-        link: 'https://github.com/tathagata1805/OctoProfile',
-        linkText: 'Github',
-        stacks: [
-          { title: 'Next JS', color: 'text-red-200' },
-          { title: 'GitHub PolyGot', color: 'text-blue-200' },
-          { title: 'Styled Components', color: 'text-gray-200' },
-          { title: 'Chart JS', color: 'text-yellow-200' },
-          { title: 'Git', color: 'text-green-200' },
-        ],
-      },
-      project6: {
-        title: 'Project Management tool',
-        subTitle: 'A fully functional Project Management tool inspired from Trello for users to efficiently manage their projects across their teams',
-        desc:
-          "Used React JS, React Feather, TypeScript.",
-        link: 'https://github.com/tathagata1805/Trello-Clone',
-        linkText: 'Github',
-        stacks: [
-          { title: 'React', color: 'text-red-200' },
-          { title: 'React Feater', color: 'text-blue-200' },
-          { title: 'Redux', color: 'text-gray-200' },
-          { title: 'Local Storage', color: 'text-yellow-200' },
-          { title: 'TypeScript', color: 'text-green-200' },
-        ],
-      },
-      project7: {
-        title: 'Uber Eats',
-        subTitle: 'A fully functional clone of Uber Eats, developed React Native consists of features like Stripe Payment Gateway, Firebase Authentication, Google Maps and Places API, and Yelp API',
-        desc:
-          "Used React Native, Google Maps and Places API , Expo CLI, Android Studio, Firebase, Stripe, Yelp API.",
-        link: 'https://github.com/tathagata1805/Uber-Eats-Clone',
-        linkText: 'Github',
-        stacks: [
-          { title: 'React Native', color: 'text-red-200' },
-          { title: 'Expo CLI', color: 'text-blue-200' },
-          { title: 'Google APIs', color: 'text-gray-200' },
-          { title: 'Android Studio', color: 'text-yellow-200' },
-          { title: 'Firebase and Stripe', color: 'text-green-200' },
-        ],
-      },
-      project8: {
-        title: 'T-Theme',
-        subTitle: 'This is my custom made dark theme for VSCode, which was developed by taking inspiration from multiple themes available in VSCode. This is also published at the Visual Studio Code Marketplace',
-        desc:
-          "Used VSCode, JSON, GitHub.",
-        link: 'https://marketplace.visualstudio.com/items?itemName=tathagata1805.t-theme',
-        linkText: 'VSCode Marketplace',
-        stacks: [
-          { title: 'JSON', color: 'text-red-200' },
-          { title: 'VSCode', color: 'text-blue-200' },
-          { title: 'GitHub', color: 'text-green-200' },
-        ],
-      },
+    project3: {
+      title: 'Sorting Visualizer',
+      subTitle: 'An interactive React app that visualizes various sorting algorithms in real-time. Perfect for learning and understanding algorithms in a dynamic and engaging way.',
+      desc:
+        "Utilized React JS, Styled Components, and Zustand for state management to build a smooth, user-friendly visualization tool for sorting algorithms.",
+      link: 'https://github.com/tathagata1805/Sorting-Visualizer',
+      linkText: 'Github',
+      stacks: [
+        { title: 'React', color: 'text-red-200' },
+        { title: 'Vite', color: 'text-blue-200' },
+        { title: 'Styled Components', color: 'text-gray-200' },
+        { title: 'React Material', color: 'text-yellow-200' },
+        { title: 'Zustand', color: 'text-green-200' },
+      ],
+    },
+    project5: {
+      title: 'OctoProfile',
+      subTitle: 'A Next.js app to view GitHub user profiles. Fetches and displays detailed data using GitHub’s API and presents it in a clean, interactive interface.',
+      desc:
+        "Built using Next.js, GitHub PolyGot, and Chart.js, this app provides insights into GitHub stats, including contributions and repositories, with visually appealing charts.",
+      link: 'https://github.com/tathagata1805/OctoProfile',
+      linkText: 'Github',
+      stacks: [
+        { title: 'Next JS', color: 'text-red-200' },
+        { title: 'GitHub PolyGot', color: 'text-blue-200' },
+        { title: 'Styled Components', color: 'text-gray-200' },
+        { title: 'Chart JS', color: 'text-yellow-200' },
+        { title: 'Git', color: 'text-green-200' },
+      ],
+    },
+    project6: {
+      title: 'Project Management Tool',
+      subTitle: 'A Trello-inspired project management app to efficiently track tasks and projects, built with React, TypeScript, and Redux for state management.',
+      desc:
+        "Developed a fully functional project management tool for teams to collaborate and manage tasks, utilizing React JS, React Feather icons, and TypeScript for a seamless experience.",
+      link: 'https://github.com/tathagata1805/Trello-Clone',
+      linkText: 'Github',
+      stacks: [
+        { title: 'React', color: 'text-red-200' },
+        { title: 'React Feather', color: 'text-blue-200' },
+        { title: 'Redux', color: 'text-gray-200' },
+        { title: 'Local Storage', color: 'text-yellow-200' },
+        { title: 'TypeScript', color: 'text-green-200' },
+      ],
+    },
+    project7: {
+      title: 'Uber Eats Clone',
+      subTitle: 'A clone of the Uber Eats app built with React Native, incorporating features such as Stripe Payment Gateway, Firebase Authentication, Google Maps, and Yelp API.',
+      desc:
+        "This mobile app allows users to browse restaurants, order food, and track deliveries with integrated maps and payment systems, built using React Native, Firebase, and Expo CLI.",
+      link: 'https://github.com/tathagata1805/Uber-Eats-Clone',
+      linkText: 'Github',
+      stacks: [
+        { title: 'React Native', color: 'text-red-200' },
+        { title: 'Expo CLI', color: 'text-blue-200' },
+        { title: 'Google APIs', color: 'text-gray-200' },
+        { title: 'Android Studio', color: 'text-yellow-200' },
+        { title: 'Firebase and Stripe', color: 'text-green-200' },
+      ],
+    },
+    project8: {
+      title: 'T-Theme (VSCode Theme)',
+      subTitle: 'A custom dark theme for Visual Studio Code inspired by multiple popular themes. Available on the VSCode Marketplace for developers.',
+      desc:
+        "Created a minimalistic, eye-friendly dark theme for VSCode using JSON, designed for developers who prefer a modern, dark workspace.",
+      link: 'https://marketplace.visualstudio.com/items?itemName=tathagata1805.t-theme',
+      linkText: 'VSCode Marketplace',
+      stacks: [
+        { title: 'JSON', color: 'text-red-200' },
+        { title: 'VSCode', color: 'text-blue-200' },
+        { title: 'GitHub', color: 'text-green-200' },
+      ],
+    },
   };
 
   return (
@@ -159,14 +144,6 @@ export default function projects() {
             linkText={projectData.project3.linkText}
             stacks={projectData.project3.stacks}
           />
-          {/* <ProjectCards
-            title={projectData.project4.title}
-            subTitle={projectData.project4.subTitle}
-            desc={projectData.project4.desc}
-            link={projectData.project4.link}
-            linkText={projectData.project4.linkText}
-            stacks={projectData.project4.stacks}
-          /> */}
           <ProjectCards
             title={projectData.project5.title}
             subTitle={projectData.project5.subTitle}

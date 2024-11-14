@@ -4,25 +4,91 @@ import InternshipCard from '@/components/InternshipCard';
 import VolunteerCard from '@/components/VolunteerCard';
 import Head from 'next/head';
 
-export default function skillsAndExperience() {
+export default function SkillsAndExperience() {
   const internData = {
     codeclouds: {
-      title: 'CodeClouds IT Solutions Pvt. Ltd., Software Engineer - Frontend',
+      title: 'CodeClouds IT Solutions Pvt. Ltd., Software Engineer',
       date: 'August 2022 – Present',
       place: 'Kolkata, India',
-      desc: 'Developed and maintained dynamic web applications and platforms with 6 other team members. Increased website performance by around a significant margin of 60 %. Collaborated with backend developers, design team and QA members, led troubleshooting and updated sites and ensured smooth functionality of web applications throughout entire SDLC. Implemented cloud and containerization solutions with senior developers to ensure smooth development process across teams. Worked with internal product teams to develop cross functional websites and internal products of the organization along with the official website. Optimized the code for faster loading, improved performance by more than 50% and SEO friendliness. Mentored new joiners and trainees in Software Engineering domains and developed workflow for them',
+      desc: (
+        <>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              Developed and implemented a software solution that automated manual tasks, reducing execution time from 2 hours to under 15 minutes, resulting in a 90% reduction in manual labor and driving 80% business growth by optimizing internal workflows.
+            </li>
+            <li>
+              Contributed to the core product suite used by millions of users, improving user engagement and business impact through scalable, high-quality solutions.
+            </li>
+            <li>
+              Led the development and maintenance of key frontend components using modern technologies (React, JavaScript), significantly enhancing the user experience.
+            </li>
+            <li>
+              Wrote comprehensive end-to-end (E2E) test cases using Jest and React Testing Library to ensure robustness, maintainability, and seamless product delivery.
+            </li>
+            <li>
+              Spearheaded the transition from legacy systems to modern architecture, integrating new frontend features and optimizing backend microservices, resulting in a 60% improvement in performance, enhanced scalability, and better system support.
+            </li>
+            <li>
+              Collaborated cross-functionally with development, QA, and operations teams to resolve technical challenges, ensuring smooth deployment and enhanced system functionality.
+            </li>
+            <li>
+              Implemented Docker-based containerization for development, staging, and production environments, ensuring consistent deployments and smooth operations through best practices in DevOps.
+            </li>
+            <li>
+              Utilized Agile methodologies to manage sprints and deliverables efficiently, improving team productivity and meeting deadlines consistently.
+            </li>
+            <li>
+              Optimized frontend and backend code to enhance scalability, reduce latency, and improve system performance, focusing on best practices for microservices architecture and API integrations.
+            </li>
+          </ul>
+        </>
+      ),
     },
     quordnet: {
       title: 'Quordnet Academy, Frontend Engineer (Intern)',
       date: 'January 2022 – July 2022',
       place: 'Kolkata, India',
-      desc: '•	Solely responsible for the development of our product websites, adding new and advanced features to the websites using React JS and other frontend technologies, thus improving user engagement by over 70% and SEO friendliness by over 50%. Adding mobile responsiveness and dark mode to the website, improving the performance by more than 40%. Writing clean, scalable and production ready code using modern architecture and technologies. Containerized the codebase, along with implemented cloud services along with the Engineering leads to ensure smooth process throughout the SDLC.',
+      desc: (
+        <>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              Solely responsible for the development of product websites, adding new features using React JS and other frontend technologies, improving user engagement by over 70% and SEO friendliness by 50%.
+            </li>
+            <li>
+              Implemented mobile responsiveness and dark mode, improving performance by more than 40%.
+            </li>
+            <li>
+              Wrote clean, scalable, and production-ready code using modern architecture and technologies.
+            </li>
+            <li>
+              Containerized the codebase and implemented cloud services in collaboration with Engineering leads to ensure smooth SDLC processes.
+            </li>
+          </ul>
+        </>
+      ),
     },
     webprism: {
       title: 'Web Prism IT Solutions PVT. Ltd, Frontend Engineer (Freelance)',
       date: 'June 2022 – August 2022',
       place: 'Kolkata, India',
-      desc: 'Worked as a Freelancing Frontend Engineer and was a individual contributor to multiple client projects across the world. Collaborated with senior developers to ensure smooth process of development. Built teams and led a team of 3 engineers to develop highly dynamic web applications. Actively participated in deployment and production solutions, containerizations techniques and client handling thus streamlining the process.',
+      desc: (
+        <>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              Worked as a Freelancing Frontend Engineer, contributing individually to multiple client projects globally.
+            </li>
+            <li>
+              Collaborated with senior developers to ensure a smooth development process.
+            </li>
+            <li>
+              Led a team of 3 engineers to develop highly dynamic web applications.
+            </li>
+            <li>
+              Actively participated in deployment, production solutions, containerization techniques, and client handling to streamline the process.
+            </li>
+          </ul>
+        </>
+      ),
     },
   };
 
@@ -56,7 +122,7 @@ export default function skillsAndExperience() {
   return (
     <>
       <Head>
-        <title>Expereience | GitHub</title>
+        <title>Experience | GitHub</title>
       </Head>
       <Layout border="border-2">
         <h3 className="text-lg font-semibold mt-3">Work Experiences</h3>

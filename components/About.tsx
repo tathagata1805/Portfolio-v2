@@ -1,30 +1,24 @@
 import React from 'react';
-import {
-  IoBasketballOutline,
-  IoCameraOutline,
-  IoChatbubbleEllipsesOutline,
-  IoMapOutline,
-} from 'react-icons/io5';
 
 export default function About() {
   return (
     <>
-      <h1 className="text-lg font-semibold my-2">About Me</h1>
-      <div className="flex flex-col mb-4 text-lg tracking-wide gap-y-4 px-4">
+      <h1 className="text-2xl font-semibold my-4">About Me</h1>
+      <div className="flex flex-col mb-8 text-lg tracking-wide gap-y-4 px-4">
         <p>
-          Tathagata Chakraborty is a Software Engineer who loves to build well structured and dynamic products for a better User Experience. He is currently working as a Software Engineer Frontend and has been in this domain for around 2 years now. 
+          I am a dedicated Software Engineer with 3 years of experience specializing in frontend development, and a passion for building dynamic, user-centric products. My journey began in my third year of college when I discovered the transformative power of web development — how a few lines of code could solve real-world problems. This led me to focus on frontend technologies, particularly React.js, and I proudly consider myself a self-taught developer.
         </p>
         <p>
-          He started learning Web Development in his third year and got spellbound by the fact that a few lines of codes can solve our day to day problems. Then he found interest in Frontend Technologies like React JS and thus calls himself a self taught Frontend Developer. He has around 2 years of IT experience and has worked in multiple domains, starting with his internship in a budding Ed-Tech startup to working as a freelancer for muliple clients.
+          Throughout my career, I have had the opportunity to work across diverse domains, from my initial internship at an Ed-Tech startup to freelancing for multiple clients. This variety has given me a solid foundation in both frontend and backend development, with extensive hands-on experience in JavaScript, TypeScript, React.js, Next.js, HTML, CSS, Bootstrap, MUI, and Tailwind CSS.
         </p>
         <p>
-          He knows how to work in JavaScript as well as TypeScript, mainly React JS along with extensive knowledge and expertise in HTML, CSS, Bootstrap, MUI, Tailwind, Next JS as well knowledge of backend technologies such as Node JS, Express JS, Databases like SQL and NoSQL databases. He is also skilled in Cloud technologies like MS AZURE and containerization technologies like Docker.
+          I am also proficient in backend technologies like Node.js, Express.js, SQL and NoSQL databases, and have practical knowledge of cloud platforms such as MS Azure and containerization tools like Docker.
         </p>
         <p>
-          Keeping everything aside, his best skills are that he can adapt to any situations and is a fast learner. Give him any tech- stack, he can learn it and work on it. He has also got Leadership and Team Management qualities and has proved to work in tight deadlines, unknown technologies and been successful to deliver solutions to his clients.
+          I thrive in dynamic environments, and my ability to adapt quickly to new technologies and methodologies has been a key factor in my growth. Whether it's learning a new tech stack or managing tight deadlines, I consistently deliver high-quality, scalable solutions.
         </p>
         <p>
-          He is also a seasoned team leader, building teams during his Freelancing tenure and has led product development throuhgout the entire SDLC, thus solidifying his foundation on the world of Software Engineering.
+          In addition to my technical skills, I have demonstrated leadership and team management capabilities, having led product development across the entire SDLC during my freelance projects. I am now looking for new opportunities where I can continue to grow, apply my expertise, and contribute to building impactful, innovative products.
         </p>
       </div>
     </>
