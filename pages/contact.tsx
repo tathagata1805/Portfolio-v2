@@ -21,7 +21,6 @@ export default function Contact() {
   const [formErrors, setFormErrors] = useState<
     Partial<Record<keyof typeof formData, string>>
   >({});
-
   const [formStatus, setFormStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,6 +53,7 @@ export default function Contact() {
       setFormStatus('');
       return;
     }
+
     setIsLoading(true);
 
     try {
@@ -95,177 +95,217 @@ export default function Contact() {
         <title>Contact | GitHub</title>
       </Head>
       <Layout border="border-2">
-        <h3 className="text-lg font-semibold mt-4">Contact Details</h3>
-        <div className="mt-3">
-          <div className="flex flex-col gap-2 px-4">
-            <h2 className="text-lg font-semibold">
-              Let's talk about everything!
-            </h2>
-            <h3 className="text-sm md:text-md">
-              Don't like forms? Connect with me over{' '}
-              <a
-                href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
-              >
-                LinkedIn
-              </a>
-              . 👋
-            </h3>
-            <h4>
-              <span className="text-sm md:text-md font-semibold">
-                Email me at:{' '}
-              </span>
-              <a
-                href="mailto:tathagata1805@gmail.com"
-                className="text-blue-600 hover:underline"
-              >
-                tathagata1805@gmail.com
-              </a>
-            </h4>
-            <h4>
-              <span className="text-sm md:text-md font-semibold">Mobile: </span>
-              (+91) 70030-28043
-            </h4>
-
-            <div className="mt-6 border border-gray-300 rounded-md p-6 shadow-sm w-full">
-              <h3 className="text-xl font-semibold mb-6">
-                Do you have any opportunities for me? Or simply wanna say Hi?
+        <div className="max-w-4xl mx-auto px-4 md:px-8">
+          <h3 className="text-lg font-semibold mt-4">Contact Details</h3>
+          <div className="mt-3">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-lg md:text-xl font-semibold">
+                Let's talk about everything!
+              </h2>
+              <h3 className="text-sm md:text-base">
+                Don't like forms? Connect with me over{' '}
+                <a
+                  href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  LinkedIn
+                </a>
+                . 👋
               </h3>
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-5 w-full"
-              >
-                {[
-                  {
-                    name: 'name',
-                    label: 'Name',
-                    type: 'text',
-                    required: true,
-                    placeholder: 'Your Name',
-                  },
-                  {
-                    name: 'email',
-                    label: 'Email',
-                    type: 'email',
-                    required: true,
-                    placeholder: 'Your Email Address',
-                  },
-                  {
-                    name: 'phone',
-                    label: 'Phone Number',
-                    type: 'tel',
-                    required: false,
-                    placeholder: 'Your Contact Number',
-                  },
-                  {
-                    name: 'website',
-                    label: 'Website',
-                    type: 'url',
-                    required: false,
-                    placeholder: 'Your LinkedIn, GitHub, or Portfolio',
-                  },
-                ].map(({ name, label, type, required, placeholder }) => (
-                  <div key={name} className="w-full">
-                    <div className="flex flex-row items-start gap-x-6 w-full">
-                      <label
-                        htmlFor={name}
-                        className="w-40 pt-2 text-sm font-medium text-gray-700 whitespace-nowrap"
-                      >
-                        {label}
-                        {required && (
-                          <span className="text-red-500 ml-0.5">*</span>
-                        )}
-                      </label>
-                      <div className="flex flex-col flex-grow">
-                        <input
-                          type={type}
-                          id={name}
-                          name={name}
-                          value={formData[name]}
-                          onChange={handleChange}
-                          placeholder={placeholder}
-                          className={`p-2 border ${
-                            formErrors[name]
-                              ? 'border-red-500'
-                              : 'border-gray-300'
-                          } rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500`}
-                        />
-                        {formErrors[name] && (
-                          <p className="mt-1 text-sm text-red-600">
-                            {formErrors[name]}
-                          </p>
-                        )}
+              <h4>
+                <span className="text-sm md:text-md font-semibold">
+                  Email me at:{' '}
+                </span>
+                <a
+                  href="mailto:tathagata1805@gmail.com"
+                  className="text-blue-600 hover:underline"
+                >
+                  tathagata1805@gmail.com
+                </a>
+              </h4>
+              <h4>
+                <span className="text-sm md:text-md font-semibold">
+                  Mobile:{' '}
+                </span>
+                (+91) 70030-28043
+              </h4>
+
+              <div className="mt-6 border border-gray-300 rounded-md p-6 shadow-sm w-full md:max-w-2xl">
+                <h3 className="text-sm md:text-base font-medium text-gray-800 leading-snug md:leading-tight mb-6">
+                  Open to collaborations, opportunities, or a friendly hello —
+                  feel free to reach out!
+                </h3>
+
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col gap-5 w-full"
+                >
+                  {[
+                    {
+                      name: 'name',
+                      label: 'Name',
+                      type: 'text',
+                      required: true,
+                      placeholder: 'Your Name',
+                    },
+                    {
+                      name: 'email',
+                      label: 'Email',
+                      type: 'email',
+                      required: true,
+                      placeholder: 'Your Email Address',
+                    },
+                    {
+                      name: 'phone',
+                      label: 'Phone Number',
+                      type: 'tel',
+                      required: false,
+                      placeholder: 'Your Contact Number',
+                    },
+                    {
+                      name: 'website',
+                      label: 'Link',
+                      type: 'url',
+                      required: false,
+                      placeholder: 'Link to your work',
+                    },
+                  ].map(({ name, label, type, required, placeholder }) => (
+                    <div key={name} className="w-full">
+                      <div className="flex flex-col md:flex-row md:items-start gap-y-2 md:gap-x-6 w-full">
+                        <label
+                          htmlFor={name}
+                          className="md:w-40 text-sm font-medium text-gray-700 whitespace-nowrap"
+                        >
+                          {label}
+                          {required && (
+                            <span className="text-red-500 ml-0.5">*</span>
+                          )}
+                        </label>
+                        <div className="flex flex-col flex-grow">
+                          <input
+                            type={type}
+                            id={name}
+                            name={name}
+                            value={formData[name]}
+                            onChange={handleChange}
+                            placeholder={placeholder}
+                            className={`p-2 border ${
+                              formErrors[name]
+                                ? 'border-red-500'
+                                : 'border-gray-300'
+                            } rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500`}
+                          />
+                          {formErrors[name] && (
+                            <p className="mt-1 text-sm text-red-600">
+                              {formErrors[name]}
+                            </p>
+                          )}
+                        </div>
                       </div>
                     </div>
+                  ))}
+
+                  <div className="flex flex-col md:flex-row gap-y-2 md:items-start w-full mt-4">
+                    <label
+                      htmlFor="message"
+                      className="md:w-40 text-sm font-medium text-gray-700"
+                    >
+                      Message <span className="text-red-500">*</span>
+                    </label>
+                    <div className="flex flex-col flex-grow">
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows={5}
+                        placeholder="Write your message here..."
+                        className={`w-full p-2 border ${
+                          formErrors.message
+                            ? 'border-red-500'
+                            : 'border-gray-300'
+                        } rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-pink-500`}
+                      />
+                      {formErrors.message && (
+                        <p className="text-sm text-red-600">
+                          {formErrors.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                ))}
 
-                <div className="flex flex-col gap-2 w-full mt-4">
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-gray-700"
-                  >
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    placeholder="Write your message here..."
-                    className={`w-full p-2 border ${
-                      formErrors.message ? 'border-red-500' : 'border-gray-300'
-                    } rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-pink-500`}
-                  />
-                  {formErrors.message && (
-                    <p className="text-sm text-red-600">{formErrors.message}</p>
+                  <div className="mt-4">
+                    <button
+                      type="submit"
+                      className="w-full py-2 rounded-md transition flex items-center justify-center gap-2
+             bg-[rgba(37,99,235,0.9)] hover:bg-[rgba(37,99,235,1)]
+             dark:bg-[rgba(147,197,253,0.9)] dark:hover:bg-[rgba(147,197,253,1)]
+             text-white disabled:cursor-default disabled:opacity-50"
+                      disabled={isLoading}
+                    >
+                      {isLoading && (
+                        <svg
+                          className="animate-spin h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 100 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"
+                          ></path>
+                        </svg>
+                      )}
+                      {isLoading ? 'Sending...' : 'Send Message'}
+                    </button>
+                  </div>
+
+                  {formStatus && (
+                    <p
+                      className={`mt-3 text-sm text-center ${
+                        formStatus.includes('Thank')
+                          ? 'text-green-600'
+                          : 'text-red-600'
+                      }`}
+                    >
+                      {formStatus}
+                    </p>
                   )}
-                </div>
+                </form>
+              </div>
 
-                <div className="mt-4">
-                  <button
-                    type="submit"
-                    className="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-pink-700 transition"
-                    disabled={isLoading}
+              <div className="mt-4">
+                <div className="text-black text-xl flex gap-5 flex-wrap">
+                  <Link href="https://dev-tathagata.vercel.app" passHref>
+                    <a target="_blank" rel="noopener noreferrer">
+                      <IoGlobeSharp className="hover:text-pink-600" />
+                    </a>
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3"
+                    passHref
                   >
-                    {isLoading ? 'Sending...' : 'Send Message'}
-                  </button>
+                    <a target="_blank" rel="noopener noreferrer">
+                      <IoLogoLinkedin className="hover:text-pink-600" />
+                    </a>
+                  </Link>
+                  <Link href="https://github.com/tathagata1805" passHref>
+                    <a target="_blank" rel="noopener noreferrer">
+                      <IoLogoGithub className="hover:text-pink-600" />
+                    </a>
+                  </Link>
                 </div>
-
-                {formStatus && (
-                  <p
-                    className={`mt-3 text-sm text-center ${
-                      formStatus.includes('Thank')
-                        ? 'text-green-600'
-                        : 'text-red-600'
-                    }`}
-                  >
-                    {formStatus}
-                  </p>
-                )}
-              </form>
-            </div>
-
-            <div className="mt-4">
-              <div className="text-black text-xl flex gap-5">
-                <Link href="https://dev-tathagata.vercel.app">
-                  <a target="_blank" rel="noopener noreferrer">
-                    <IoGlobeSharp className="hover:text-pink-600" />
-                  </a>
-                </Link>
-                <Link href="https://www.linkedin.com/in/tathagata-chakraborty-0bb5b71a3">
-                  <a target="_blank" rel="noopener noreferrer">
-                    <IoLogoLinkedin className="hover:text-pink-600" />
-                  </a>
-                </Link>
-                <Link href="https://github.com/tathagata1805">
-                  <a target="_blank" rel="noopener noreferrer">
-                    <IoLogoGithub className="hover:text-pink-600" />
-                  </a>
-                </Link>
               </div>
             </div>
           </div>
