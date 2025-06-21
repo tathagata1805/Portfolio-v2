@@ -252,7 +252,7 @@ export default function Header() {
               <h1 className="ml-2">Projects</h1>
             </div>
           </Link>
-          <Link href="/awards-certification">
+          {/* <Link href="/awards-certification">
             <div
               className={
                 router.pathname == '/awards-certification'
@@ -263,7 +263,7 @@ export default function Header() {
               <IoRibbonOutline />
               <h1 className="ml-2">Awards & Certification</h1>
             </div>
-          </Link>
+          </Link> */}
           <Link href="/contact">
             <div
               className={
