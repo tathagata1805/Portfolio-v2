@@ -28,9 +28,9 @@ export default function Aside() {
         <h3 className="text-lg">tathagata1805</h3>
         <p className="py-2">
           {' '}
-          SERVING NOTICE PERIOD | Actively seeking opportunities | Frontend @CodeClouds | ex- Frontend
+          Software Engineer @CodeLogicX | ex-Engineer @CodeClouds | ex- Frontend
           (Intern)@Quordnet Academy | ex-Frontend Developer (Freelance)@WPITS |
-          React JS, Next JS, JavaScript, DevOps | B.Tech@ UEMK
+          React JS, Next JS, JavaScript, TypeScript, DevOps | B.Tech@ UEMK
         </p>
 
         <div className="my-2">
