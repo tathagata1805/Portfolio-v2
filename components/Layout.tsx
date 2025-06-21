@@ -2,10 +2,11 @@ import React from 'react';
 import Header from '@/components/Header';
 import Aside from '@/components/Aside';
 import PageScrollBar from '@/components/PageScrollBar';
+import SystemFooter from './SystemFooter';
 
 const Layout = (props) => (
   <>
-    <div className="bg-white text-black dark:bg-gray-900">
+    <div className="bg-white text-black dark:bg-gray-900 min-h-screen flex flex-col">
       <Header />
       <PageScrollBar
         color="#0aa863"
@@ -13,7 +14,7 @@ const Layout = (props) => (
         gradient={true}
         height={4}
       />
-      <div className="lg:px-12 xl:px-48 flex flex-col lg:flex-row">
+      <div className="lg:px-12 xl:px-48 flex flex-col lg:flex-row flex-1">
         <Aside />
         <main className="flex-1 p-3 mt-3 lg:px-8 lg:pb-8 lg:pt-4 h-auto w-full ">
           <div
@@ -23,6 +24,7 @@ const Layout = (props) => (
           </div>
         </main>
       </div>
+      <SystemFooter />
     </div>
   </>
 );
