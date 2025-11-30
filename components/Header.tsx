@@ -22,6 +22,7 @@ import {
   IoPaperPlane,
   IoCode,
   IoGlobeSharp,
+  IoDocumentTextOutline,
 } from 'react-icons/io5';
 import DarkToggle from './DarkToggle';
 
@@ -115,6 +116,15 @@ export default function Header() {
                         >
                           <IoRibbonOutline className="w-5 h-5 mr-2" />
                           Awards & Certifications
+                        </a>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <a
+                          href="/id-generator"
+                          className="bg-violet-500 text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm"
+                        >
+                          <IoDocumentTextOutline className="w-5 h-5 mr-2" />
+                          ID Generator
                         </a>
                       </Menu.Item>
                       <Menu.Item>
@@ -264,6 +274,18 @@ export default function Header() {
               <h1 className="ml-2">Awards & Certification</h1>
             </div>
           </Link> */}
+          <Link href="/id-generator">
+            <div
+              className={
+                router.pathname == '/id-generator'
+                  ? 'p-2 w-auto flex border-b border-red-500 items-center'
+                  : 'p-2 w-auto flex border-b border-transparent  hover:border-gray-400 items-center'
+              }
+            >
+              <IoDocumentTextOutline />
+              <h1 className="ml-2">ID Generator</h1>
+            </div>
+          </Link>
           <Link href="/contact">
             <div
               className={
