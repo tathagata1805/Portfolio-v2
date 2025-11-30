@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { QRCodeSVG } from 'qrcode.react';
@@ -11,6 +11,8 @@ import {
   IoWaterOutline,
   IoGlobeOutline,
   IoDownloadOutline,
+  IoImageOutline,
+  IoClose,
 } from 'react-icons/io5';
 
 interface FormData {
@@ -45,13 +47,137 @@ export default function IdGenerator() {
   const [showLoader, setShowLoader] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showCard, setShowCard] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const progressSteps = [
     'Validating...',
     'Getting your card ready....',
     'Generating...',
   ];
+
+  const STORAGE_KEY = 'id_card_photo';
+
+  // Load image from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedImage = localStorage.getItem(STORAGE_KEY);
+      if (storedImage) {
+        try {
+          // Decode from base64
+          setUploadedImage(storedImage);
+        } catch (error) {
+          console.error('Error loading image from storage:', error);
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+    }
+  }, []);
+
+  // Clear localStorage on page unload
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.removeItem(STORAGE_KEY);
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+  // Compress and resize image
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target?.result as string;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          // Set maximum dimensions (200x200 for ID card)
+          const maxWidth = 200;
+          const maxHeight = 200;
+          let width = img.width;
+          let height = img.height;
+
+          // Calculate new dimensions
+          if (width > height) {
+            if (width > maxWidth) {
+              height = (height * maxWidth) / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width = (width * maxHeight) / height;
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          // Draw and compress
+          ctx?.drawImage(img, 0, 0, width, height);
+          
+          // Convert to base64 with compression (0.7 quality for JPEG)
+          const compressed = canvas.toDataURL('image/jpeg', 0.7);
+          resolve(compressed);
+        };
+        img.onerror = reject;
+      };
+      reader.onerror = reject;
+    });
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      alert('Please upload an image file');
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Image size should be less than 5MB');
+      return;
+    }
+
+    try {
+      const compressedImage = await compressImage(file);
+      setUploadedImage(compressedImage);
+      
+      // Store in localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(STORAGE_KEY, compressedImage);
+      }
+    } catch (error) {
+      console.error('Error processing image:', error);
+      alert('Failed to process image. Please try again.');
+    }
+
+    // Reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const removeImage = () => {
+    setUploadedImage(null);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -218,146 +344,235 @@ export default function IdGenerator() {
             </h2>
 
             {!showCard ? (
-              <div className="border border-gray-300 rounded-md p-6 shadow-sm w-full md:max-w-2xl">
-                <form className="flex flex-col gap-5 w-full">
-                  {[
-                    {
-                      name: 'name',
-                      label: 'Name',
-                      type: 'text',
-                      required: true,
-                      placeholder: 'Your Full Name',
-                    },
-                    {
-                      name: 'email',
-                      label: 'Email',
-                      type: 'email',
-                      required: true,
-                      placeholder: 'your.email@example.com',
-                    },
-                    {
-                      name: 'phone',
-                      label: 'Phone Number',
-                      type: 'tel',
-                      required: true,
-                      placeholder: '+91 1234567890',
-                    },
-                    {
-                      name: 'address',
-                      label: 'Address',
-                      type: 'text',
-                      required: true,
-                      placeholder: 'Your Address',
-                    },
-                  ].map(({ name, label, type, required, placeholder }) => (
-                    <div key={name} className="w-full">
-                      <div className="flex flex-col md:flex-row md:items-start gap-y-2 md:gap-x-6 w-full">
+              <div className="border border-gray-300 dark:border-gray-600 rounded-lg p-6 shadow-sm w-full md:max-w-2xl bg-white dark:bg-gray-800">
+                <form className="flex flex-col gap-6 w-full">
+                  {/* Top Section: Name/Email on Left, Photo Upload on Right */}
+                  <div className="flex flex-col md:flex-row gap-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                    {/* Left Side: Name and Email */}
+                    <div className="flex-1 flex flex-col gap-4">
+                      {/* Name Field */}
+                      <div className="w-full">
                         <label
-                          htmlFor={name}
-                          className="md:w-40 text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap"
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                         >
-                          {label}
-                          {required && (
-                            <span className="text-red-500 ml-0.5">*</span>
-                          )}
+                          Name
+                          <span className="text-red-500 ml-0.5">*</span>
                         </label>
-                        <div className="flex flex-col flex-grow">
-                          <input
-                            type={type}
-                            id={name}
-                            name={name}
-                            value={formData[name as keyof FormData] as string}
-                            onChange={handleChange}
-                            placeholder={placeholder}
-                            className={`p-2 border ${
-                              formErrors[name as keyof FormData]
-                                ? 'border-red-500'
-                                : 'border-gray-300 dark:border-gray-600'
-                            } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
-                          />
-                          {formErrors[name as keyof FormData] && (
-                            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                              {formErrors[name as keyof FormData]}
-                            </p>
-                          )}
-                        </div>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Your Full Name"
+                          className={`w-full p-3 border ${
+                            formErrors.name
+                              ? 'border-red-500'
+                              : 'border-gray-300 dark:border-gray-600'
+                          } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                        />
+                        {formErrors.name && (
+                          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                            {formErrors.name}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Email Field */}
+                      <div className="w-full">
+                        <label
+                          htmlFor="email"
+                          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
+                          Email
+                          <span className="text-red-500 ml-0.5">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="your.email@example.com"
+                          className={`w-full p-3 border ${
+                            formErrors.email
+                              ? 'border-red-500'
+                              : 'border-gray-300 dark:border-gray-600'
+                          } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                        />
+                        {formErrors.email && (
+                          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                            {formErrors.email}
+                          </p>
+                        )}
                       </div>
                     </div>
-                  ))}
 
-                  {/* Emergency Contact */}
-                  <div className="w-full">
-                    <div className="flex flex-col md:flex-row md:items-start gap-y-2 md:gap-x-6 w-full">
+                    {/* Right Side: Photo Upload */}
+                    <div className="flex flex-col items-center md:items-end gap-3">
+                      <div className="flex flex-col items-center gap-2">
+                        {uploadedImage ? (
+                          <div className="relative">
+                            <img
+                              src={uploadedImage}
+                              alt="Uploaded"
+                              className="w-24 h-24 rounded-full object-cover border-2 border-gray-300 dark:border-gray-600 shadow-md"
+                            />
+                            <button
+                              type="button"
+                              onClick={removeImage}
+                              className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 transition shadow-lg"
+                              title="Remove photo"
+                            >
+                              <IoClose className="text-sm" />
+                            </button>
+                          </div>
+                        ) : (
+                          <label className="cursor-pointer">
+                            <div className="w-24 h-24 rounded-full border-2 border-dashed border-gray-400 dark:border-gray-500 flex items-center justify-center bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+                              <IoImageOutline className="text-3xl text-gray-500 dark:text-gray-400" />
+                            </div>
+                            <input
+                              ref={fileInputRef}
+                              type="file"
+                              accept="image/*"
+                              onChange={handleImageUpload}
+                              className="hidden"
+                            />
+                          </label>
+                        )}
+                        <span className="text-xs text-gray-500 dark:text-gray-400 text-center">
+                          {uploadedImage ? 'Photo added' : 'Add photo (optional)'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Section: All Other Fields */}
+                  <div className="flex flex-col gap-5">
+                    {/* Phone Number */}
+                    <div className="w-full">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Phone Number
+                        <span className="text-red-500 ml-0.5">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 1234567890"
+                        className={`w-full p-3 border ${
+                          formErrors.phone
+                            ? 'border-red-500'
+                            : 'border-gray-300 dark:border-gray-600'
+                        } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      />
+                      {formErrors.phone && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {formErrors.phone}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Address */}
+                    <div className="w-full">
+                      <label
+                        htmlFor="address"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                      >
+                        Address
+                        <span className="text-red-500 ml-0.5">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        placeholder="Your Address"
+                        className={`w-full p-3 border ${
+                          formErrors.address
+                            ? 'border-red-500'
+                            : 'border-gray-300 dark:border-gray-600'
+                        } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      />
+                      {formErrors.address && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {formErrors.address}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Emergency Contact */}
+                    <div className="w-full">
                       <label
                         htmlFor="emergencyContact"
-                        className="md:w-40 text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
                         Emergency Contact
                         <span className="text-red-500 ml-0.5">*</span>
                       </label>
-                      <div className="flex flex-col flex-grow">
-                        <input
-                          type="tel"
-                          id="emergencyContact"
-                          name="emergencyContact"
-                          value={formData.emergencyContact}
-                          onChange={handleChange}
-                          placeholder="+91 1234567890"
-                          className={`p-2 border ${
-                            formErrors.emergencyContact
-                              ? 'border-red-500'
-                              : 'border-gray-300 dark:border-gray-600'
-                          } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
-                        />
-                        {formErrors.emergencyContact && (
-                          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                            {formErrors.emergencyContact}
-                          </p>
-                        )}
-                      </div>
+                      <input
+                        type="tel"
+                        id="emergencyContact"
+                        name="emergencyContact"
+                        value={formData.emergencyContact}
+                        onChange={handleChange}
+                        placeholder="+91 1234567890"
+                        className={`w-full p-3 border ${
+                          formErrors.emergencyContact
+                            ? 'border-red-500'
+                            : 'border-gray-300 dark:border-gray-600'
+                        } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      />
+                      {formErrors.emergencyContact && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {formErrors.emergencyContact}
+                        </p>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Blood Group */}
-                  <div className="w-full">
-                    <div className="flex flex-col md:flex-row md:items-start gap-y-2 md:gap-x-6 w-full">
+                    {/* Blood Group */}
+                    <div className="w-full">
                       <label
                         htmlFor="bloodGroup"
-                        className="md:w-40 text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
                         Blood Group
                         <span className="text-red-500 ml-0.5">*</span>
                       </label>
-                      <div className="flex flex-col flex-grow">
-                        <input
-                          type="text"
-                          id="bloodGroup"
-                          name="bloodGroup"
-                          value={formData.bloodGroup}
-                          onChange={handleChange}
-                          placeholder="e.g., A+, B-, O+, etc."
-                          className={`p-2 border ${
-                            formErrors.bloodGroup
-                              ? 'border-red-500'
-                              : 'border-gray-300 dark:border-gray-600'
-                          } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
-                        />
-                        {formErrors.bloodGroup && (
-                          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                            {formErrors.bloodGroup}
-                          </p>
-                        )}
-                      </div>
+                      <input
+                        type="text"
+                        id="bloodGroup"
+                        name="bloodGroup"
+                        value={formData.bloodGroup}
+                        onChange={handleChange}
+                        placeholder="e.g., A+, B-, O+, etc."
+                        className={`w-full p-3 border ${
+                          formErrors.bloodGroup
+                            ? 'border-red-500'
+                            : 'border-gray-300 dark:border-gray-600'
+                        } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      />
+                      {formErrors.bloodGroup && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {formErrors.bloodGroup}
+                        </p>
+                      )}
                     </div>
-                  </div>
 
-                  {/* Website Links */}
-                  <div className="w-full">
-                    <div className="flex flex-col md:flex-row md:items-start gap-y-2 md:gap-x-6 w-full">
-                      <label className="md:w-40 text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
-                        Website Links
+                    {/* Website Links */}
+                    <div className="w-full">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Website Links (optional)
                       </label>
-                      <div className="flex flex-col flex-grow gap-2">
+                      <div className="flex flex-col gap-2">
                         {formData.websites.map((website, index) => (
                           <div key={index} className="flex gap-2 items-center">
                             <input
@@ -367,13 +582,14 @@ export default function IdGenerator() {
                                 handleWebsiteChange(index, e.target.value)
                               }
                               placeholder={`Website ${index + 1} (optional)`}
-                              className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                              className="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
                             />
                             {formData.websites.length > 1 && (
                               <button
                                 type="button"
                                 onClick={() => removeWebsite(index)}
-                                className="text-red-500 hover:text-red-700"
+                                className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 transition"
+                                title="Remove website"
                               >
                                 <IoCloseCircleOutline className="text-2xl" />
                               </button>
@@ -384,7 +600,7 @@ export default function IdGenerator() {
                           <button
                             type="button"
                             onClick={addWebsite}
-                            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm"
+                            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm w-fit"
                           >
                             <IoAddCircleOutline />
                             Add Website
@@ -392,41 +608,37 @@ export default function IdGenerator() {
                         )}
                       </div>
                     </div>
-                  </div>
 
-                  {/* QR Link */}
-                  <div className="w-full">
-                    <div className="flex flex-col md:flex-row md:items-start gap-y-2 md:gap-x-6 w-full">
+                    {/* QR Link */}
+                    <div className="w-full">
                       <label
                         htmlFor="qrLink"
-                        className="md:w-40 text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap"
+                        className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
                         QR Link To
                         <span className="text-red-500 ml-0.5">*</span>
                       </label>
-                      <div className="flex flex-col flex-grow">
-                        <input
-                          type="text"
-                          id="qrLink"
-                          name="qrLink"
-                          value={formData.qrLink}
-                          onChange={handleChange}
-                          placeholder="your website or contact link"
-                          className={`p-2 border ${
-                            formErrors.qrLink
-                              ? 'border-red-500'
-                              : 'border-gray-300 dark:border-gray-600'
-                          } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
-                        />
-                        {formErrors.qrLink && (
-                          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
-                            {formErrors.qrLink}
-                          </p>
-                        )}
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                          The QR code will link to this URL or email
+                      <input
+                        type="text"
+                        id="qrLink"
+                        name="qrLink"
+                        value={formData.qrLink}
+                        onChange={handleChange}
+                        placeholder="your website or contact link"
+                        className={`w-full p-3 border ${
+                          formErrors.qrLink
+                            ? 'border-red-500'
+                            : 'border-gray-300 dark:border-gray-600'
+                        } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
+                      />
+                      {formErrors.qrLink && (
+                        <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                          {formErrors.qrLink}
                         </p>
-                      </div>
+                      )}
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        The QR code will link to this URL or email
+                      </p>
                     </div>
                   </div>
 
@@ -455,8 +667,16 @@ export default function IdGenerator() {
                   <div className="relative z-10">
                     {/* Header with Avatar and Name */}
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                        {getInitials(formData.name)}
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg overflow-hidden">
+                        {uploadedImage ? (
+                          <img
+                            src={uploadedImage}
+                            alt={formData.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          getInitials(formData.name)
+                        )}
                       </div>
                       <div className="flex-1">
                         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -568,6 +788,11 @@ export default function IdGenerator() {
                         qrLink: '',
                       });
                       setFormErrors({});
+                      // Clear uploaded image
+                      setUploadedImage(null);
+                      if (typeof window !== 'undefined') {
+                        localStorage.removeItem(STORAGE_KEY);
+                      }
                     }}
                     className="px-6 py-2 rounded-md bg-gray-600 hover:bg-gray-700 text-white transition"
                   >
