@@ -120,8 +120,11 @@ export default function Header() {
                       </Menu.Item>
                       <Menu.Item>
                         <a
-                          href="/id-generator"
-                          className="bg-violet-500 text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            router.push('/id-generator');
+                          }}
+                          className="bg-violet-500 text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
                         >
                           <IoDocumentTextOutline className="w-5 h-5 mr-2" />
                           ID Generator
